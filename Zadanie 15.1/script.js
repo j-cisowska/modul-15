@@ -15,28 +15,16 @@ console.log(multiply(6));
 
 //Zadanie trzecie
 
-/*const average = (...args) => {
- let result = 0;
- args.forEach(arg => result += arg);
-return result / args.length;
-}
+const average = (...args) =>
 
 
-console.log(average(1)); // 1
+/*console.log(average(1)); // 1
 console.log(average(1, 3)); // 2
 console.log(average(1, 3, 5, 6)); // 3.75 */
 
 //Zadanie czwarte
 
-const average = (...args) => {
- let result = 0;
- args.forEach(arg => result += arg);
-return result / args.length;
-}
 
-const grades = [1, 5, 5, 5, 4, 3, 3, 2, 1];
-
-console.log(average(...grades));
 
 //Zadanie piąte
 

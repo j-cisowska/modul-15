@@ -1,0 +1,16 @@
+{
+  "name": "zadanie146",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "http-server"
+  },
+  "author": "Joanna",
+  "license": "ISC"
+}
