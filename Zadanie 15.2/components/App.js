@@ -18,16 +18,52 @@ App = React.createClass({
 				this.setState({
 				loading: true 
 				});
-				this.getGif(searchingText, function(gif) {
+				this.getGif(searchingText).then(gif => this.setState({
+					loading: false, 
+					gif: gif, 
+					searchingText: searchingText
+				})
+				)
+				
+				.catch(error => console.error(Błąd));
+				/*this.getGif(searchingText, function(gif) {
 				this.setState({ 
 				loading: false, 
 				gif: gif, 
 				searchingText: searchingText 
 				});
-				}.bind(this));
+				}.bind(this));*/
 				},
 				
-				getGif: function(searchingText, callback) { 
+				
+				    getGif: function(searchingText) {
+          return new Promise(
+              function (resolve, reject) {
+                  let url = '/v1/gifs/random?api_key=' + apiKey + '&tag=' + searchingText;
+                  let xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                    if (this.status === 200) {
+                        let data = JSON.parse(this.responseText).data;
+                        var gif = {
+                            url: data.fixed_width_downsampled_url,
+                            sourceUrl: data.url
+                        };
+                        resolve(gif);
+                    } else {
+                        reject(new Error(this.statusText));
+                      }
+                    };
+                    xhr.onerror = function () {
+                        reject(new Error(
+                            `XMLHttpRequest Error: ${this.statusText}`));
+                        };
+                    xhr.open('GET', url);
+                    xhr.send();
+                  }
+                );
+},
+				
+				/*getGif: function(searchingText, callback) { 
 					var url = baseUrl + '/v1/gifs/random?api_key=' + apiKey + '&tag=' + searchingText; 
 					
 					let xhr = new XMLHttpRequest(); 
@@ -48,7 +84,7 @@ App = React.createClass({
 					}
 				};
     xhr.send();
-},
+},*/
 	
 
 	

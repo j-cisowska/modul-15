@@ -4,7 +4,6 @@ class Stopwatch extends React.Component {
 	constructor() {
 		
 		super();
-		
 		this.state = {
         running: false,
         times: {
@@ -45,7 +44,8 @@ class Stopwatch extends React.Component {
 	
 	
 	print() {
-        this.display.innerText = this.format(this.times);
+		this.display = document.querySelector('.stopwatch');
+        this.display.innerText = this.format(this.state.times);
 }
 
 //Zgubienie kontekstu z function pad0 ??? dodanie this.pad0
@@ -102,17 +102,6 @@ class Stopwatch extends React.Component {
 		);
 	}
 }
-
-
-
-/*const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
-
-//Nasłuchiwacze
-var startButton = document.getElementById('start');
-startButton.addEventListener('click', () => stopwatch.start());
-
-var stopButton = document.getElementById('stop');
-stopButton.addEventListener('click', () => stopwatch.stop());*/
 
 
 ReactDOM.render(<Stopwatch/>, document.getElementById('app'));

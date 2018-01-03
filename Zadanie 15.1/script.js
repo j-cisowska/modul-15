@@ -15,15 +15,17 @@ console.log(multiply(6));
 
 //Zadanie trzecie
 
-const average = (...args) =>
+const average = (...args) => args.reduce((suma,item) => suma + item, 0)/args.length;
 
 
-/*console.log(average(1)); // 1
+console.log(average(1)); // 1
 console.log(average(1, 3)); // 2
-console.log(average(1, 3, 5, 6)); // 3.75 */
+console.log(average(1, 3, 5, 6)); // 3.75 
 
 //Zadanie czwarte
 
+const grades = [1, 5, 5, 5, 4, 3, 3, 2, 1];
+console.log(average(...grades));
 
 
 //Zadanie piąte

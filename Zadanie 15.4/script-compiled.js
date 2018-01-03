@@ -54,7 +54,8 @@ var Stopwatch = function (_React$Component) {
 	}, {
 		key: 'print',
 		value: function print() {
-			this.display.innerText = this.format(this.times);
+			this.display = document.querySelector('.stopwatch');
+			this.display.innerText = this.format(this.state.times);
 		}
 
 		//Zgubienie kontekstu z function pad0 ??? dodanie this.pad0
@@ -138,14 +139,5 @@ var Stopwatch = function (_React$Component) {
 
 	return Stopwatch;
 }(React.Component);
-
-/*const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
-
-//Nasłuchiwacze
-var startButton = document.getElementById('start');
-startButton.addEventListener('click', () => stopwatch.start());
-
-var stopButton = document.getElementById('stop');
-stopButton.addEventListener('click', () => stopwatch.stop());*/
 
 ReactDOM.render(React.createElement(Stopwatch, null), document.getElementById('app'));

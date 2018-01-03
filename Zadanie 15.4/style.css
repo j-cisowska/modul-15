@@ -13,12 +13,12 @@ body {
 
 .stopwatch {
 	margin-top: 15px;
-	font-size: 30px;
+	font-size: 35px;
 	color: white;
 }
 
 
-#start {
+.start {
 	background-color: white; 
 	text-decoration: none;
     border: none;
@@ -31,7 +31,7 @@ body {
 }
 	
 
-#stop {
+.stop {
 	background-color: white; 
 	text-decoration: none;
 	font-size: 30px;
