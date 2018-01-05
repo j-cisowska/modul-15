@@ -18,75 +18,44 @@ App = React.createClass({
 				this.setState({
 				loading: true 
 				});
-				this.getGif(searchingText).then(gif => this.setState({
+				this.getGif(searchingText)
+					.then(gif => this.setState({
 					loading: false, 
 					gif: gif, 
 					searchingText: searchingText
 				})
 				)
-				
-				.catch(error => console.error(Błąd));
-				/*this.getGif(searchingText, function(gif) {
-				this.setState({ 
-				loading: false, 
-				gif: gif, 
-				searchingText: searchingText 
-				});
-				}.bind(this));*/
+				.catch(error => console.error('Something is not right', Error));
 				},
 				
 				
-				    getGif: function(searchingText) {
-          return new Promise(
-              function (resolve, reject) {
-                  let url = '/v1/gifs/random?api_key=' + apiKey + '&tag=' + searchingText;
-                  let xhr = new XMLHttpRequest();
-                  xhr.onload = function() {
+			getGif: function(searchingText) {
+				return new Promise(
+				function (resolve, reject) {
+                  let url = baseUrl + '/v1/gifs/random?api_key=' + apiKey + '&tag=' + searchingText;
+                  const request = new XMLHttpRequest();
+                  request.onload = function() {
                     if (this.status === 200) {
                         let data = JSON.parse(this.responseText).data;
                         var gif = {
                             url: data.fixed_width_downsampled_url,
                             sourceUrl: data.url
                         };
-                        resolve(gif);
+                        resolve(gif); //dostajemy gifa
                     } else {
-                        reject(new Error(this.statusText));
+                        reject(new Error(this.statusText)); //dostajemy błąd
                       }
                     };
-                    xhr.onerror = function () {
+                    request.onerror = function () {
                         reject(new Error(
                             `XMLHttpRequest Error: ${this.statusText}`));
                         };
-                    xhr.open('GET', url);
-                    xhr.send();
+                    request.open('GET', url);
+                    request.send();
                   }
                 );
-},
+		},
 				
-				/*getGif: function(searchingText, callback) { 
-					var url = baseUrl + '/v1/gifs/random?api_key=' + apiKey + '&tag=' + searchingText; 
-					
-					let xhr = new XMLHttpRequest(); 
-					
-					//xhr.open('GET', url);
-					
-					request.onload = function() {
-					if (this.status === 200) {
-					let data = JSON.parse(xhr.responseText).data;
-					else {
-						reject(new Error(this.statusText));
-					}///
-					var gif = { 
-					url: data.fixed_width_downsampled_url,
-					sourceUrl: data.url
-					};
-						callback(gif); 
-					}
-				};
-    xhr.send();
-},*/
-	
-
 	
 	render: function() {
 
