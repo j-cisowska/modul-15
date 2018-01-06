@@ -19,13 +19,13 @@ App = React.createClass({
 				loading: true 
 				});
 				this.getGif(searchingText)
-					.then(gif => this.setState({
+					.then(gif => this.setState({ //wywołanie
 					loading: false, 
 					gif: gif, 
 					searchingText: searchingText
 				})
 				)
-				.catch(error => console.error('Something is not right', Error));
+				.catch(error => console.error('Something is not right', Error)); //wywołanie
 				},
 				
 				
