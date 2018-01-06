@@ -2,7 +2,6 @@ var baseUrl = 'http://api.giphy.com';
 var apiKey = 'SAzDGE4fBdQnnF2zSqrQOTan02BuWT1c';
 
 
-
 App = React.createClass({
     
 	getInitialState() {
@@ -80,5 +79,3 @@ App = React.createClass({
         );
     }
 });
-
-ReactDOM.render(<App/>, document.getElementById('app'));
